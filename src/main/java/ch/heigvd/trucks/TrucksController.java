@@ -19,9 +19,9 @@ public class TrucksController {
 
     public void create(Context ctx) {
         Truck truck = ctx.bodyAsClass(Truck.class);
-        truck.id = nextId.getAndIncrement();
+        truck.setId(nextId.getAndIncrement());
 
-        trucks.put(truck.id, truck);
+        trucks.put(truck.getId(), truck);
 
         ctx.json(truck);
         ctx.status(HttpStatus.CREATED);
@@ -49,8 +49,8 @@ public class TrucksController {
             throw new NotFoundResponse();
         }
 
-        truck.driver = updateTruckDto.driver;
-        truck.name = updateTruckDto.name;
+        truck.setDriver(updateTruckDto.getDriver());
+        truck.setDriver(updateTruckDto.getName());
 
         ctx.json(truck);
         ctx.status(HttpStatus.OK);

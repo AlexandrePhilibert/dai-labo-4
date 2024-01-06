@@ -19,9 +19,9 @@ public class IceCreamController {
 
     public void create(Context ctx) {
         IceCream iceCream = ctx.bodyAsClass(IceCream.class);
-        iceCream.id = nextId.getAndIncrement();
+        iceCream.setId(nextId.getAndIncrement());
 
-        iceCreams.put(iceCream.id, iceCream);
+        iceCreams.put(iceCream.getId(), iceCream);
 
         ctx.json(iceCream);
         ctx.status(HttpStatus.CREATED);
@@ -49,8 +49,8 @@ public class IceCreamController {
             throw new NotFoundResponse();
         }
 
-        iceCream.name = updateIceCreamDto.name;
-        iceCream.flavor = updateIceCreamDto.flavor;
+        iceCream.setName(updateIceCreamDto.getName());
+        iceCream.setFlavor(updateIceCreamDto.getFlavor());
 
         ctx.json(iceCream);
         ctx.status(HttpStatus.OK);
