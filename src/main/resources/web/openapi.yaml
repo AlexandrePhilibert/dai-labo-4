@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Icecream Truck Simulator
+  description: Icecream Truck Simulator
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080'
+paths:
+  /trucks:
+    post:
+      description: Create truck
+      requestBody:
+        $ref: "#/components/schemas/CreateTruck"
+      responses:
+        201:
+          description: Successfully created truck
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Truck"
+    get:
+      description: List all trucks
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Truck"
+  /trucks/{id}:
+    get:
+      description: Get a truck by ID
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the truck"
+          schema:
+            type: number
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+    put:
+      description: Update a truck by its id
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the truck"
+          schema:
+            type: number
+      requestBody:
+        $ref: "#/components/schemas/CreateTruck"
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+        202:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Truck"
+    delete:
+      description: Delete a truck by its id
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the truck"
+          schema:
+            type: number
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Truck"
+  /icecreams:
+    post:
+      description: Create ice cream
+      requestBody:
+        $ref: "#/components/schemas/CreateIceCream"
+      responses:
+        201:
+          description: Successfully created truck
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IceCream"
+    get:
+      description: List all ice creams
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IceCream"
+  /icecreams/{id}:
+    get:
+      description: Get an ice cream by its ID
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the ice cream"
+          schema:
+            type: number
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IceCream"
+    put:
+      description: Update an ice cream by its ID
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the ice cream"
+          schema:
+            type: number
+      requestBody:
+        $ref: "#/components/schemas/CreateIceCream"
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+        202:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IceCream"
+    delete:
+      description: Delete an ice cream by its id
+      parameters:
+        - in: path
+          name: id
+          description: "The ID of the ice cream"
+          schema:
+            type: number
+      responses:
+        404:
+          $ref: "#/components/responses/NotFound"
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IceCream"
+
+components:
+  responses:
+    NotFound:
+      description: "The requested object was not found"
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/Error"
+              - example:
+                  ok: false
+                  message: "not_found"
+  schemas:
+    Error:
+      type: object
+      required:
+        - ok
+        - message
+      properties:
+        ok:
+          type: boolean
+          default: false
+        message:
+          type: string
+    IdElement:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "The unique identifier of the object"
+    Truck:
+      allOf:
+        - $ref: "#/components/schemas/IdElement"
+        - $ref: "#/components/schemas/CreateTruck"
+    CreateTruck:
+      type: object
+      required: ["name", "driver"]
+      properties:
+        name:
+          type: string
+          description: "The name of the ice cream truck"
+        driver:
+          type: string
+          description: "The name of the driver"
+        availableIceCream:
+          type: array
+          default: []
+          description: "The list of ice cream IDs the truck supports"
+          items:
+            type: number
+    IceCream:
+      allOf:
+        - $ref: "#/components/schemas/IdElement"
+        - $ref: "#/components/schemas/CreateIceCream"
+    CreateIceCream:
+      type: object
+      required: ["name", "flavor"]
+      properties:
+        name:
+          type: string
+          description: "The commercial name of the ice cream"
+        flavor:
+          type: string
+          description: "Just the flavor. If it is proprietary, but near a common name, use the common name"
