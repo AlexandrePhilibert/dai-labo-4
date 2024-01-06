@@ -3,6 +3,7 @@ package ch.heigvd.trucks;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
+import io.javalin.openapi.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
