@@ -6,14 +6,12 @@ services:
     image: "traefik:v2.10"
     container_name: "traefik"
     command:
-      #- "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
-      - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
@@ -24,3 +22,15 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.icecreamtruck.lol`)"
       - "traefik.http.routers.whoami.entrypoints=web"
+
+
+  api:
+    image: "ghcr.io/alexandrephilibert/icecreamtruck:latest"
+    container_name: "api"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`icecreamtruck.lol`)"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.services.api.loadbalancer.server.port=8080"
+
+
