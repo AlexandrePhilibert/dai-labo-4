@@ -2,6 +2,10 @@
 
 This RESTful API allows you to manage your ice cream trucks and ice creams.
 
+## Demo
+
+You can access the public instance of this service over at https://icecreamtruck.lol
+
 ## Members
 
 | Member | Role |
@@ -11,19 +15,17 @@ This RESTful API allows you to manage your ice cream trucks and ice creams.
 | [Gwendal Piemontesi](https://github.com/gwendalpiemonte/)    | Deployment             |
 | [Guillaume Trüeb](https://github.com/truebguillaume/)        | Secretary + Deployment |
 
-## Server setup
-
-In case you just started with a fresh linux install and you want to install this software, 
-a detailed manual is available over at [SERVER_SETUP.md](SERVER_SETUP.md)
-
 ## Deploy the app
 
 If you are a more seasoned sys-admin, you can install Icecream truck Simulator with the following:
 
 **Pre-requisites**:
-- You need a working installation of docker
+- You need a working installation of docker (see https://github.com/docker/docker-install for a convenience script)
 - The port `443` **MUST** be accessible on the internet
   (the default compose provides a loadbalancer with automatic certificate issuance)
+- Get your token to interact with the GHCR repository
+  (see [Github's documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
+  to get started)
 
 After that, you can download the prepared [docker-compose.yaml file](./docker-compose.yml),
 configure it to your liking, and profit 💸💸💸
@@ -39,20 +41,20 @@ docker compose up -d
 
 ## Access the app
 
-In order to access the app (the swagger), go to : https://icecreamtruck.lol/docs.
+In order to access the API documentation, go to : https://<your domain>/docs.
 
 ## Configure the DNS zone
 
 Create an A record for the API:
 
 ```
-A icecreamtruck.lol <the server ip>
+A <your domain> <the server ip>
 ```
 
-Create an A record for the whoami:
+Create an A record for the whoami service:
 
 ```
-A whoami.icecreamtruck.lol <the server ip>
+A whoami.<your domain> <the server ip>
 ```
 
 ## Docker
@@ -60,18 +62,18 @@ A whoami.icecreamtruck.lol <the server ip>
 Build the docker image:
 
 ```sh
-docker build -t ghcr.io/alexandrephilibert/icecreamtruck:latest
+docker build -t ghcr.io/alexandrephilibert/dai-labo-4:latest
 ``` 
 
 You can publish the image to ghcr using the following command:
 
 ```sh
-docker push ghcr.io/alexandrephilibert/icecreamtruck:latest
+docker push ghcr.io/alexandrephilibert/dai-labo-4:latest
 ```
 
 You must have the `package:write` permissions in order to push the image.
 
-Here is the [link](https://github.com/AlexandrePhilibert/dai-labo-4/pkgs/container/icecreamtruck) to the docker image.
+Here is the [link](https://github.com/AlexandrePhilibert/dai-labo-4/pkgs/container/dai-labo-4) to the docker image.
 
 ## Examples
 
