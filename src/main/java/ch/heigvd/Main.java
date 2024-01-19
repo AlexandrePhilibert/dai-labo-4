@@ -20,6 +20,7 @@ public class Main {
       config.staticFiles.add("/web");
       ReDocConfiguration configuration = new ReDocConfiguration();
       configuration.setDocumentationPath("/openapi.yaml");
+      configuration.setBasePath("/docs");
       config.plugins.register(new ReDocPlugin(configuration));
     });
 
