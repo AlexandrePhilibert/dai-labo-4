@@ -5,8 +5,6 @@ import ch.heigvd.icecreams.IceCreamController;
 import ch.heigvd.trucks.Truck;
 import ch.heigvd.trucks.TrucksController;
 import io.javalin.Javalin;
-import io.javalin.openapi.plugin.OpenApiPlugin;
-import io.javalin.openapi.plugin.OpenApiPluginConfiguration;
 import io.javalin.openapi.plugin.redoc.ReDocConfiguration;
 import io.javalin.openapi.plugin.redoc.ReDocPlugin;
 
@@ -20,7 +18,6 @@ public class Main {
   public static void main(String[] args) {
     Javalin app = Javalin.create(config -> {
       config.staticFiles.add("/web");
-      config.plugins.register(new OpenApiPlugin(new OpenApiPluginConfiguration()));
       ReDocConfiguration configuration = new ReDocConfiguration();
       configuration.setDocumentationPath("/openapi.yaml");
       config.plugins.register(new ReDocPlugin(configuration));
