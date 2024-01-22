@@ -4,6 +4,7 @@ info:
   description: Icecream Truck Simulator
   version: 1.0.0
 servers:
+  - url: 'https://icecreamtruck.lol'
   - url: 'https://localhost:8080'
 paths:
   /trucks:
@@ -38,6 +39,7 @@ paths:
           description: "The ID of the truck"
           schema:
             type: number
+          required: true
       responses:
         404:
           $ref: "#/components/responses/NotFound"
@@ -49,6 +51,7 @@ paths:
           description: "The ID of the truck"
           schema:
             type: number
+          required: true
       requestBody:
         $ref: "#/components/schemas/CreateTruck"
       responses:
@@ -68,6 +71,7 @@ paths:
           description: "The ID of the truck"
           schema:
             type: number
+          required: true
       responses:
         404:
           $ref: "#/components/responses/NotFound"
@@ -109,6 +113,7 @@ paths:
           description: "The ID of the ice cream"
           schema:
             type: number
+          required: true
       responses:
         404:
           $ref: "#/components/responses/NotFound"
@@ -126,6 +131,7 @@ paths:
           description: "The ID of the ice cream"
           schema:
             type: number
+          required: true
       requestBody:
         $ref: "#/components/schemas/CreateIceCream"
       responses:
@@ -145,6 +151,7 @@ paths:
           description: "The ID of the ice cream"
           schema:
             type: number
+          required: true
       responses:
         404:
           $ref: "#/components/responses/NotFound"
