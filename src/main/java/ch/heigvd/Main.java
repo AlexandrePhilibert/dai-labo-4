@@ -20,7 +20,7 @@ public class Main {
       config.staticFiles.add("/web");
       ReDocConfiguration configuration = new ReDocConfiguration();
       configuration.setDocumentationPath("/openapi.yaml");
-      configuration.setBasePath("/docs");
+      configuration.setUiPath("/docs");
       config.plugins.register(new ReDocPlugin(configuration));
     });
 
@@ -52,7 +52,7 @@ public class Main {
 
         path("{id}", () -> {
           get(trucksController::findOneById);
-          put(trucksController::updateOneById);
+          put(trucksController::putOneById);
           delete(trucksController::deleteOneById);
         });
       });

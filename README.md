@@ -20,12 +20,57 @@ You can access the public instance of this service over at https://icecreamtruck
 If you are a more seasoned sys-admin, you can install Icecream truck Simulator with the following:
 
 **Pre-requisites**:
+- Login with an SSH key instead of the password. Here's a [digitalocean documentation page](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-debian-11) to help you
+  
+  TL;DR:
+  ```shell
+  # Generate on your local computer a SSH key:
+  ssh-keygen -t ed25519
+  # Copy the key to the remote server:
+  ssh-copy-id heiguser@<machine_ip>
+  # Disable SSH password authentication
+  sudo nano /etc/ssh/sshd_config
+  # In that file, replace 
+  # 
+  # PasswordAuthentication yes
+  # to 
+  # PasswordAuthentication no
+  # 
+  # Save, and quit.
+  
+  # Restart the ssh server to apply the changes
+  sudo systemctl restart ssh
+  ```
 - You need a working installation of docker (see https://github.com/docker/docker-install for a convenience script)
+  
+  TL;DR:
+  ```shell
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  # Validate the script manually, to ensure it does not do things that break your server!
+  sh get-docker.sh
+  ```
 - The port `443` **MUST** be accessible on the internet
   (the default compose provides a loadbalancer with automatic certificate issuance)
+  > [!INFO]
+  > If you have a server provided by the HEIG following the template, this should aleady be done for you.
 - Get your token to interact with the GHCR repository
   (see [Github's documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
   to get started)
+  
+  TL;DR:
+  - Go to [Github PAT's page](https://github.com/settings/tokens)
+  - Create a new **classic token**
+  - Grant it the `package:read` permission
+  - Execute the following command on the server (replacing the values between `<>` with your values:
+    ```shell
+    export CR_PAT=<THE TOKEN YOU GOT FROM GITHUB>
+    echo $CR_PAT | docker login ghcr.io -u <YOUR USERNAME> --password-stdin
+    ```
+
+> [!WARNING]
+> We encourage you to only download the `docker-compose.prod.yml` instead of cloning the entire repository for the following reasons:
+> - This encourages you to use the pre-built images, instead of building them yourself. The images are built automatically on commit.
+>   - As a side effect, this makes automatic updates (using the remote registry) easier than local image builds.
 
 After that, you can download the prepared [docker-compose.yaml file](./docker-compose.yml),
 configure it to your liking, and profit 💸💸💸
@@ -41,7 +86,9 @@ docker compose up -d
 
 ## Access the app
 
-In order to access the API documentation, go to : https://<your domain>/docs.
+In order to access the API documentation, go to : `https://<your domain>/docs`.
+
+For local development, the url is : `https://localhost:8080/docs`
 
 ## Configure the DNS zone
 
@@ -77,4 +124,6 @@ Here is the [link](https://github.com/AlexandrePhilibert/dai-labo-4/pkgs/contain
 
 ## Examples
 
-TODO
+You can learn more about the design of the documentation on [USAGE.md](USAGE.md).
+
+By default, the application also provides an interactive documentation at `<your server url>/docs`

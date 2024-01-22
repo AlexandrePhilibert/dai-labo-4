@@ -44,13 +44,12 @@ public class IceCreamController {
 
         IceCream updateIceCreamDto = ctx.bodyValidator(IceCream.class).get();
 
-        IceCream iceCream = iceCreams.get(id);
-        if (iceCream == null) {
-            throw new NotFoundResponse();
-        }
+        IceCream iceCream = iceCreams.getOrDefault(id, new IceCream());
 
         iceCream.setName(updateIceCreamDto.getName());
         iceCream.setFlavor(updateIceCreamDto.getFlavor());
+
+        iceCreams.put(id, iceCream);
 
         ctx.json(iceCream);
         ctx.status(HttpStatus.OK);
