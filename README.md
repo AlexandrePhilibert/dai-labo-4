@@ -51,7 +51,7 @@ If you are a more seasoned sys-admin, you can install Icecream truck Simulator w
   ```
 - The port `443` **MUST** be accessible on the internet
   (the default compose provides a loadbalancer with automatic certificate issuance)
-  > [!INFO]
+  > [!NOTE]
   > If you have a server provided by the HEIG following the template, this should aleady be done for you.
 - Get your token to interact with the GHCR repository
   (see [Github's documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
@@ -71,8 +71,21 @@ If you are a more seasoned sys-admin, you can install Icecream truck Simulator w
 > We encourage you to only download the `docker-compose.prod.yml` instead of cloning the entire repository for the following reasons:
 > - This encourages you to use the pre-built images, instead of building them yourself. The images are built automatically on commit.
 >   - As a side effect, this makes automatic updates (using the remote registry) easier than local image builds.
+> 
+> If you still want to do it this way, here is the way to do it:
+> ```shell
+> git clone https://github.com/AlexandrePhilibert/dai-labo-4.git
+> cd ./dai-labo-4
+> rm ./docker-compose.yaml
+> mv ./docker-compose.prod.yml ./docker-compose.yaml
+> # Replace everything within angle brackets with your values
+> ${VISUAL:-${EDITOR:-vi}} "docker-compose.yaml"
+> # Start the container stack
+> docker compose up -d
+> # Wait a minute for the certificates to be issued, and tada 🎉!
+> ```
 
-After that, you can download the prepared [docker-compose.yaml file](./docker-compose.yml),
+After that, you can download the prepared [docker-compose.yaml file](./docker-compose.yaml),
 configure it to your liking, and profit 💸💸💸
 ```shell
 wget https://github.com/AlexandrePhilibert/dai-labo-4/raw/main/docker-compose.prod.yml
@@ -81,7 +94,7 @@ mv docker-compose.prod.yaml docker-compose.yaml
 ${VISUAL:-${EDITOR:-vi}} "docker-compose.yaml"
 # Start the container stack
 docker compose up -d
-# Wait a minute for the certificates to be issued, and tada!
+# Wait a minute for the certificates to be issued, and tada 🎉!
 ```
 
 ## Access the app
