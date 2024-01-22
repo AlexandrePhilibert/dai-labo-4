@@ -88,7 +88,7 @@ If you are a more seasoned sys-admin, you can install Icecream truck Simulator w
 After that, you can download the prepared [docker-compose.yaml file](./docker-compose.yaml),
 configure it to your liking, and profit 💸💸💸
 ```shell
-wget https://github.com/AlexandrePhilibert/dai-labo-4/raw/main/docker-compose.prod.yml
+wget https://github.com/AlexandrePhilibert/dai-labo-4/raw/main/docker-compose.prod.yaml
 mv docker-compose.prod.yaml docker-compose.yaml
 # Replace everything within angle brackets with your values
 ${VISUAL:-${EDITOR:-vi}} "docker-compose.yaml"
