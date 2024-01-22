@@ -7,7 +7,7 @@ As a reference, here are (as a complement to the redoc interface), cURL examples
 ### Create ice cream
 Creates a new ice cream, assigning it a new ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1icecreams/post)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams/post)
 
 ```shell
 curl -X POST https://icecreamtruck.lol/icecreams \
@@ -19,7 +19,7 @@ curl -X POST https://icecreamtruck.lol/icecreams \
 
 Lists all ice creams by its ID.
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1icecreams/get)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams/get)
 
 ```shell
 curl -X GET https://icecreamtruck.lol/ice creams \
@@ -30,7 +30,7 @@ curl -X GET https://icecreamtruck.lol/ice creams \
 
 Gets an ice cream by its ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1icecreams~1%7Bid%7D/get)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams~1%7Bid%7D/get)
 
 ```shell
 
@@ -43,7 +43,7 @@ curl -X GET https://icecreamtruck.lol/ice creams/{id} \
 
 Updates an ice cream by its id
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1icecreams~1%7Bid%7D/put)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams~1%7Bid%7D/put)
 
 ```shell
 curl -X PUT https://icecreamtruck.lol/ice creams/{id} \
@@ -54,7 +54,7 @@ curl -X PUT https://icecreamtruck.lol/ice creams/{id} \
 
 Deletes an ice cream by its ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1icecreams~1%7Bid%7D/delete)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams~1%7Bid%7D/delete)
 
 ```shell
 curl -X DELETE https://icecreamtruck.lol/ice creams/{id} \
@@ -64,7 +64,7 @@ curl -X DELETE https://icecreamtruck.lol/ice creams/{id} \
 ### Create truck
 Creates a new truck, assigning it a new ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1trucks/post)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1trucks/post)
 
 ```shell
 curl -X POST https://icecreamtruck.lol/trucks \
@@ -74,7 +74,7 @@ curl -X POST https://icecreamtruck.lol/trucks \
 ## List trucks
 Lists all trucks
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1trucks/get)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1trucks/get)
 
 ```shell
 curl -X GET https://icecreamtruck.lol/trucks \
@@ -84,7 +84,7 @@ curl -X GET https://icecreamtruck.lol/trucks \
 ## Get truck by ID
 Gets a truck by its ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1trucks~1%7Bid%7D/get)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1trucks~1%7Bid%7D/get)
 
 ```shell
 curl -X GET https://icecreamtruck.lol/trucks/{id} \
@@ -96,7 +96,7 @@ curl -X GET https://icecreamtruck.lol/trucks/{id} \
 
 Updates / creates a truck by its ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1trucks~1%7Bid%7D/put)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1trucks~1%7Bid%7D/put)
 
 ```shell
 curl -X PUT https://icecreamtruck.lol/trucks/{id} \
@@ -107,7 +107,7 @@ curl -X PUT https://icecreamtruck.lol/trucks/{id} \
 
 Deletes a truck by its ID
 
-[Documentation](https://icecreamtruck.lol/redoc#/paths/~1trucks~1%7Bid%7D/delete)
+[Documentation](https://icecreamtruck.lol/docs#/paths/~1trucks~1%7Bid%7D/delete)
 
 ```shell
 curl -X DELETE https://icecreamtruck.lol/trucks/{id} \
