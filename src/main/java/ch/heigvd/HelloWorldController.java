@@ -15,7 +15,7 @@ public class HelloWorldController {
     public void hello(Context ctx) {
         ctx.json(new HomeResult(
                 "Welcome traveler!",
-                "https://icecreamtruck.lol",
+                "https://icecreamtruck.lol/docs",
                 "Icecream Truck Simulator"
         ));
     }
