@@ -51,7 +51,7 @@ public class TrucksController {
         }
 
         truck.setDriver(updateTruckDto.getDriver());
-        truck.setDriver(updateTruckDto.getName());
+        truck.setName(updateTruckDto.getName());
 
         ctx.json(truck);
         ctx.status(HttpStatus.OK);
