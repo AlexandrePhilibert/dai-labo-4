@@ -3,7 +3,6 @@ package ch.heigvd.trucks;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
-import io.javalin.openapi.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -40,18 +39,18 @@ public class TrucksController {
         ctx.status(HttpStatus.OK);
     }
 
-    public void updateOneById(Context ctx) {
+    public void putOneById(Context ctx) {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
         Truck updateTruckDto = ctx.bodyValidator(Truck.class).get();
 
-        Truck truck = trucks.get(id);
-        if (truck == null) {
-            throw new NotFoundResponse();
-        }
+        Truck truck = trucks.getOrDefault(id, new Truck());
 
         truck.setDriver(updateTruckDto.getDriver());
         truck.setName(updateTruckDto.getName());
+        truck.setAvailableIceCreams(updateTruckDto.getAvailableIceCreams());
+
+        trucks.put(id, truck);
 
         ctx.json(truck);
         ctx.status(HttpStatus.OK);

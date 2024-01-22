@@ -77,4 +77,6 @@ Here is the [link](https://github.com/AlexandrePhilibert/dai-labo-4/pkgs/contain
 
 ## Examples
 
-TODO
+You can learn more about the design of the documentation on [USAGE.md](USAGE.md).
+
+By default, the application also provides an interactive documentation at `<your server url>/docs`

@@ -1,5 +1,6 @@
 package ch.heigvd.trucks;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Truck {
@@ -9,7 +10,7 @@ public class Truck {
 
     private String driver;
 
-    private Set<Integer> availableIceCreams;
+    private Set<Integer> availableIceCreams = new HashSet<>();
 
     public Integer getId() {
         return id;
