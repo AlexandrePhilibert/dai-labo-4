@@ -51,8 +51,8 @@ If you are a more seasoned sys-admin, you can install Icecream truck Simulator w
   ```
 - The port `443` **MUST** be accessible on the internet
   (the default compose provides a loadbalancer with automatic certificate issuance)
-  > [!NOTE]
-  > If you have a server provided by the HEIG following the template, this should aleady be done for you.
+> [!NOTE]
+> If you have a server provided by the HEIG following the template, this should aleady be done for you.
 - Get your token to interact with the GHCR repository
   (see [Github's documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
   to get started)
