@@ -77,7 +77,7 @@ If you are a more seasoned sys-admin, you can install Icecream truck Simulator w
 > git clone https://github.com/AlexandrePhilibert/dai-labo-4.git
 > cd ./dai-labo-4
 > rm ./docker-compose.yaml
-> mv ./docker-compose.prod.yml ./docker-compose.yaml
+> mv ./docker-compose.prod.yaml ./docker-compose.yaml
 > # Replace everything within angle brackets with your values
 > ${VISUAL:-${EDITOR:-vi}} "docker-compose.yaml"
 > # Start the container stack
