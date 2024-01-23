@@ -22,7 +22,7 @@ Lists all ice creams by its ID.
 [Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams/get)
 
 ```shell
-curl -X GET https://icecreamtruck.lol/ice creams \
+curl -X GET https://icecreamtruck.lol/icecreams \
   -H 'Accept: application/json'
 ```
 
@@ -34,7 +34,7 @@ Gets an ice cream by its ID
 
 ```shell
 
-curl -X GET https://icecreamtruck.lol/ice creams/{id} \
+curl -X GET https://icecreamtruck.lol/icecreams/{id} \
   -H 'Accept: application/json'
 
 ```
@@ -46,7 +46,7 @@ Updates an ice cream by its id
 [Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams~1%7Bid%7D/put)
 
 ```shell
-curl -X PUT https://icecreamtruck.lol/ice creams/{id} \
+curl -X PUT https://icecreamtruck.lol/icecreams/{id} \
   -H 'Accept: application/json'
 ```
 
@@ -57,7 +57,7 @@ Deletes an ice cream by its ID
 [Documentation](https://icecreamtruck.lol/docs#/paths/~1icecreams~1%7Bid%7D/delete)
 
 ```shell
-curl -X DELETE https://icecreamtruck.lol/ice creams/{id} \
+curl -X DELETE https://icecreamtruck.lol/icecreams/{id} \
   -H 'Accept: application/json'
 ```
 
